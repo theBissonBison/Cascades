@@ -1,0 +1,8 @@
+.vscode
+*.code-workspace
+*.sublime-*
+
+/Dockerfile
+/ffbuild/
+/artifacts/
+/.cache/
