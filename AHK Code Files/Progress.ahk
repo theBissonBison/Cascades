@@ -1,6 +1,9 @@
 ﻿;ACTIVE BRANCH
-;Make backup timer for GrabTabs
 ;upgrade to use OnMessage()
+
+;add support to grab timestamped videos after timestamp
+;improve firefox grabtabs
+
 #NoEnv
 ;#Warn ;::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 SendMode Input
@@ -203,7 +206,7 @@ if !WinExist("ahk_id" GUIHwnd)
 Line = 5
 if !WinExist("ahk_id" hwndlistbutton)
 {
-	gosub ListButton
+	gosub ListButton1
 }
 Line = 5
 goto GrabTabs
@@ -964,12 +967,15 @@ return
 ;:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 listbutton:
+Line = 0
+
+listbutton1:
 URLArray := BlankArray
 ;URLArray.Delete(URLArray.MinIndex(), URLArray.MaxIndex())
 
 if WinExist("ahk_id" hwndlistbutton)
 {
-	Gui, %hwndlistbutton%:Destroy	
+	Gui, %hwndlistbutton%:Destroy
 }
 ;^+q::
 Gui, New
@@ -1121,11 +1127,12 @@ if Line = 5
 		return
 	}
 }
+
 ShowListGUIButton2:
 if (Line != 5)
 {
 	SetTitleMatchMode, RegEx
-	WinWaitActive, (Google Chrome),,10 ;|Mozilla Firefox|Microsoft Edge Add more Browsers::::::::::::::::::::::::::::::::::::::::::::::
+	WinWaitActive, (Google Chrome|Mozilla Firefox),,10 ;Firefox undergoing validation!!!   |Mozilla Firefox|Microsoft Edge Add more Browsers::::::::::::::::::::::::::::::::::::::::::::::
 	if ErrorLevel
 	{
 		MsgBox, No browser window selected.`nCommand cancelled.
