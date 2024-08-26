@@ -314,6 +314,9 @@ Gui, Add, Button, x545 y410 gSettingsDefault, Revert to Defaults
 Gui, Add, Button, x675 y410 gSettingsApply, Apply changes
 
 Gui, Show, w800 h450, Cascades Settings
+
+Run, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "-U"", , Hide ;NEW
+
 return
 
 
@@ -1358,7 +1361,7 @@ if PlaylistTrue = 1
 
 if RadioGroup = 1 ;video
 {
-	RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\%VideoTitle%.`%(ext)s" "-f" "%VideoFormat%" "--ignore-config" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
+	RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\%VideoTitle%.`%(ext)s" "-f" "%VideoFormat%" "--ignore-config" "-S" "height:1080" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
 	Format := VideoFormat
 }
 if RadioGroup = 2 ;music
@@ -1371,7 +1374,7 @@ goto endingR
 NonYoutubeRedirect:
 if RadioGroup = 1 ;video
 {
-	RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\`%(title)s.`%(ext)s" "-f" "%VideoFormat%" "--ignore-config" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
+	RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\`%(title)s.`%(ext)s" "-f" "%VideoFormat%" "--ignore-config" "-S" "height:1080" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
 }
 if RadioGroup = 2 ;music
 {
@@ -1417,7 +1420,7 @@ Loop, % URLArray.Count()
 			
 			if RadioGroup = 1 ;video
 			{
-				RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\%ListPLRoot%\`%(title)s.`%(ext)s" "-f" "%VideoFormat%" "--ignore-config" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
+				RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\%ListPLRoot%\`%(title)s.`%(ext)s" "-S" "height:1080" "-f" "%VideoFormat%" "--ignore-config" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
 			}
 			if RadioGroup = 2 ;music
 			{
@@ -1428,7 +1431,7 @@ Loop, % URLArray.Count()
 	
 	if RadioGroup = 1 ;video
 	{
-		RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\`%(title)s.`%(ext)s" "-f" "%VideoFormat%" "--ignore-config" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
+		RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\`%(title)s.`%(ext)s" "-f" "%VideoFormat%" "-S" "height:1080" "--ignore-config" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
 	}
 	if RadioGroup = 2 ;music
 	{
@@ -1471,7 +1474,7 @@ if (VideoTitle = "")
 DownloadRoot = %DownloadRoot%\%VideoTitle%
 if RadioGroup = 1 ;video
 {
-	RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\`%(title)s.`%(ext)s" "-f" "%VideoFormat%" "--ignore-config" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
+	RunWait, %comspec% /c ""%LocalAppData%\Cascades\yt-dlp.exe" "--no-mtime" "--newline" "-i" "-o" "%DownloadRoot%\`%(title)s.`%(ext)s" "-f" "%VideoFormat%" "--ignore-config" "-S" "height:1080" "--hls-prefer-native" "--ffmpeg-location" "%LocalAppData%\Cascades\FFMPEG\ffmpeg.exe" "%VideoURL%"", , hide
 }
 if RadioGroup = 2 ;music
 {
